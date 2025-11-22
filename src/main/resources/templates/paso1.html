@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Paso 1 - Datos del Conductor</title>
+</head>
+<body>
+<h2>Paso 1: Datos del Conductor</h2>
+
+<form th:action="@{/wizard/crear}" th:object="${wizardData}" method="post">
+    <div>
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" />
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+    </div>
+    <div>
+        <label>Edad:</label>
+        <input type="number" th:field="*{edad}" />
+        <span th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></span>
+    </div>
+    <div>
+        <label>Años de carnet:</label>
+        <input type="number" th:field="*{aniosCarnet}" />
+        <span th:if="${#fields.hasErrors('aniosCarnet')}" th:errors="*{aniosCarnet}"></span>
+    </div>
+
+    <button type="submit">Siguiente</button>
+</form>
+</body>
+</html>
