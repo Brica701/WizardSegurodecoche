@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmación</title>
+</head>
+<body>
+<h2>Contratación completada</h2>
+<p>Gracias por contratar con nosotros.</p>
+<p>Identificador de cotización: <span th:text="${id}"></span></p>
+<p>Precio total: <span th:text="${precio}"></span> €</p>
+<a href="/seguros/calculos/cotizacion/paso1">Nueva cotización</a>
+</body>
+</html>

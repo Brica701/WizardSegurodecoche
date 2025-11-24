@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Paso 3 - Coberturas y Confirmación</title>
+</head>
+<body>
+<h2>Paso 3: Coberturas y Confirmación</h2>
+<form th:action="@{/seguros/calculos/cotizacion/confirmar}" th:object="${cotizacion}" method="post">
+    Tipo de cobertura: <select th:field="*{tipo_cobertura}">
+    <option value="TERCEROS" th:selected="${cotizacion.tipo_cobertura == 'TERCEROS'}">Terceros</option>
+    <option value="TERCEROS_LUNAS" th:selected="${cotizacion.tipo_cobertura == 'TERCEROS_LUNAS'}">Terceros con lunas</option>
+    <option value="TODO_RIESGO" th:selected="${cotizacion.tipo_cobertura == 'TODO_RIESGO'}">Todo riesgo</option>
+</select><br/>
+    Asistencia en carretera: <input type="checkbox" th:field="*{asistencia}"/><br/>
+    Vehículo de sustitución: <input type="checkbox" th:field="*{veh_sustitucion}"/><br/>
+
+    <h3>Resumen</h3>
+    <p>Nombre: <span th:text="*{nombre}"></span></p>
+    <p>Edad: <span th:text="*{edad}"></span></p>
+    <p>Años carnet: <span th:text="*{anios_carnet}"></span></p>
+    <p>Marca: <span th:text="*{marca}"></span></p>
+    <p>Modelo: <span th:text="*{modelo}"></span></p>
+    <p>Año matrícula: <span th:text="*{anio_mat}"></span></p>
+    <p>Uso: <span th:text="*{uso}"></span></p>
+    <p>Tipo de cobertura: <span th:text="*{tipo_cobertura}"></span></p>
+    <p>Asistencia: <span th:text="*{asistencia} ? 'Sí' : 'No'"></span></p>
+    <p>Vehículo sustitución: <span th:text="*{veh_sustitucion} ? 'Sí' : 'No'"></span></p>
+
+    <button type="submit">Confirmar</button>
+</form>
+<button onclick="window.history.back()">Volver</button>
+</body>
+</html>

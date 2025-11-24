@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Paso 1 - Datos del Conductor</title>
+    <title>Paso 1 - Datos Conductor</title>
 </head>
 <body>
-<h2>Paso 1: Datos del Conductor</h2>
-
-<form th:action="@{/wizard/crear}" th:object="${wizardData}" method="post">
-    <div>
-        <label>Nombre:</label>
-        <input type="text" th:field="*{nombre}" />
-        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
-    </div>
-    <div>
-        <label>Edad:</label>
-        <input type="number" th:field="*{edad}" />
-        <span th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></span>
-    </div>
-    <div>
-        <label>Años de carnet:</label>
-        <input type="number" th:field="*{aniosCarnet}" />
-        <span th:if="${#fields.hasErrors('aniosCarnet')}" th:errors="*{aniosCarnet}"></span>
-    </div>
-
+<h2>Paso 1: Datos del conductor</h2>
+<form th:action="@{/seguros/calculos/cotizacion/paso1}" th:object="${cotizacion}" method="post">
+    Nombre: <input type="text" th:field="*{nombre}" required/><br/>
+    NIF: <input type="text" th:field="*{nif}" maxlength="9" required/><br/>
+    Edad: <input type="number" th:field="*{edad}" min="18" required/><br/>
+    Años de carnet: <input type="number" th:field="*{anios_carnet}" min="0" required/><br/>
     <button type="submit">Siguiente</button>
 </form>
 </body>
