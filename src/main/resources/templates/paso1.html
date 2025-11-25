@@ -1,30 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Paso 1 - Datos del Conductor</title>
+    <title>Title</title>
 </head>
 <body>
-<h2>Paso 1: Datos del Conductor</h2>
 
-<form th:action="@{/wizard/crear}" th:object="${wizardData}" method="post">
-    <div>
-        <label>Nombre:</label>
-        <input type="text" th:field="*{nombre}" />
-        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
-    </div>
-    <div>
-        <label>Edad:</label>
-        <input type="number" th:field="*{edad}" />
-        <span th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></span>
-    </div>
-    <div>
-        <label>Años de carnet:</label>
-        <input type="number" th:field="*{aniosCarnet}" />
-        <span th:if="${#fields.hasErrors('aniosCarnet')}" th:errors="*{aniosCarnet}"></span>
-    </div>
+<form th:action="@{/seguros/calculos/cotizacion/paso2}"
+      th:object="${cotizacionSeguro}"
+      method="post">
 
-    <button type="submit">Siguiente</button>
+    <label for="nombre">Nombre y apellidos:</label>
+    <input id="nombre" type="text" th:field="*{nombre}"/>
+
+    <label for="edad">Edad:</label>
+    <input id="edad" type="text" th:field="*{edad}"/>
+
+    <label for="aniosCarnet">Años carnet:</label>
+    <input id="aniosCarnet" type="text" th:field="*{aniosCarnet}"/>
+
+    <button>Siguiente</button>
 </form>
+
+
 </body>
 </html>
