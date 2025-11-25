@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Paso 1: Datos del conductor</h2>
-<form th:action="@{/seguros/calculos/cotizacion/paso1}" th:object="${cotizacion}" method="post">
+<form th:action="@{/paso1}" th:object="${cotizacion}" method="post">
     Nombre: <input type="text" th:field="*{nombre}" required/><br/>
     NIF: <input type="text" th:field="*{nif}" maxlength="9" required/><br/>
     Edad: <input type="number" th:field="*{edad}" min="18" required/><br/>

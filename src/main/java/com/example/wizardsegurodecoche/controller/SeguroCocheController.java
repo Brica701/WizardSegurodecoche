@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/seguros")
 public class SeguroCocheController {
 
     private final CotizacionSeguroService servicio;
@@ -22,7 +21,7 @@ public class SeguroCocheController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/calculos/cotizacion/paso1")
+    @GetMapping("/paso1")
     public String paso1(Model model, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
         if (c == null) {
@@ -32,7 +31,7 @@ public class SeguroCocheController {
         return "paso1";
     }
 
-    @PostMapping("/calculos/cotizacion/paso1")
+    @PostMapping("/paso1")
     public String procesarPaso1(@ModelAttribute CotizacionSeguro cotizacion, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
         if (c == null) c = new CotizacionSeguro();
@@ -43,21 +42,21 @@ public class SeguroCocheController {
         c.setAnios_carnet(cotizacion.getAnios_carnet());
 
         session.setAttribute("cotizacion", c);
-        return "redirect:/seguros/calculos/cotizacion/paso2";
+        return "redirect:/paso2";
     }
 
-    @GetMapping("/calculos/cotizacion/paso2")
+    @GetMapping("/paso2")
     public String paso2(Model model, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
-        if (c == null) return "redirect:/seguros/calculos/cotizacion/paso1";
+        if (c == null) return "redirect:/paso1";
         model.addAttribute("cotizacion", c);
         return "paso2";
     }
 
-    @PostMapping("/calculos/cotizacion/paso2")
+    @PostMapping("/paso2")
     public String procesarPaso2(@ModelAttribute CotizacionSeguro cotizacion, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
-        if (c == null) return "redirect:/seguros/calculos/cotizacion/paso1";
+        if (c == null) return "redirect:/paso1";
 
         c.setMarca(cotizacion.getMarca());
         c.setModelo(cotizacion.getModelo());
@@ -65,21 +64,21 @@ public class SeguroCocheController {
         c.setUso(cotizacion.getUso());
 
         session.setAttribute("cotizacion", c);
-        return "redirect:/seguros/calculos/cotizacion/paso3";
+        return "redirect:/paso3";
     }
 
-    @GetMapping("/calculos/cotizacion/paso3")
+    @GetMapping("/paso3")
     public String paso3(Model model, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
-        if (c == null) return "redirect:/seguros/calculos/cotizacion/paso1";
+        if (c == null) return "redirect:/paso1";
         model.addAttribute("cotizacion", c);
         return "paso3";
     }
 
-    @PostMapping("/calculos/cotizacion/confirmar")
+    @PostMapping("/confirmacion")
     public String confirmar(@ModelAttribute CotizacionSeguro cotizacion, Model model, HttpSession session) {
         CotizacionSeguro c = (CotizacionSeguro) session.getAttribute("cotizacion");
-        if (c == null) return "redirect:/seguros/calculos/cotizacion/paso1";
+        if (c == null) return "redirect:/paso1";
 
         // Actualizar coberturas desde formulario
         c.setTipo_cobertura(cotizacion.getTipo_cobertura());

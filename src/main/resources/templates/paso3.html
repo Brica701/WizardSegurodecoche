@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Paso 3: Coberturas y Confirmación</h2>
-<form th:action="@{/seguros/calculos/cotizacion/confirmar}" th:object="${cotizacion}" method="post">
+<form th:action="@{/confirmacion}" th:object="${cotizacion}" method="post">
     Tipo de cobertura: <select th:field="*{tipo_cobertura}">
     <option value="TERCEROS" th:selected="${cotizacion.tipo_cobertura == 'TERCEROS'}">Terceros</option>
     <option value="TERCEROS_LUNAS" th:selected="${cotizacion.tipo_cobertura == 'TERCEROS_LUNAS'}">Terceros con lunas</option>

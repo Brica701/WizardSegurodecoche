@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Paso 2: Datos del vehículo</h2>
-<form th:action="@{/seguros/calculos/cotizacion/paso2}" th:object="${cotizacion}" method="post">
+<form th:action="@{/paso2}" th:object="${cotizacion}" method="post">
     Marca: <input type="text" th:field="*{marca}" required/><br/>
     Modelo: <input type="text" th:field="*{modelo}" required/><br/>
     Año de matriculación: <input type="number" th:field="*{anio_mat}" min="1900" max="2100" required/><br/>
